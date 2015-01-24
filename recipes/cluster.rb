@@ -16,7 +16,7 @@ end
 
 
 version = node["percona"]["version"]
-node["percona"]["cluster"]["package"]  = value_for_platform_family(
+node.default["percona"]["cluster"]["package"]  = value_for_platform_family(
                                         "debian" => "percona-xtradb-cluster-#{version.tr(".", "")}",
                                         "rhel" => "Percona-XtraDB-Cluster-#{version.tr(".", "")}"
                                       )

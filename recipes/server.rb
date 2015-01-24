@@ -10,14 +10,14 @@ version = node["percona"]["version"]
 # install packages
 case node["platform_family"]
 when "debian"
-  node["percona"]["server"]["package"] = "percona-server-server-#{version}"
+  node.default["percona"]["server"]["package"] = "percona-server-server-#{version}"
 
   package node["percona"]["server"]["package"] do
     options "--force-yes"
   end
 when "rhel"
-  node["percona"]["server"]["package"]    = "Percona-Server-server-#{version.tr(".", "")}"
-  node["percona"]["server"]["shared_pkg"] = "Percona-Server-shared-#{version.tr(".", "")}"
+  node.default["percona"]["server"]["package"]    = "Percona-Server-server-#{version.tr(".", "")}"
+  node.default["percona"]["server"]["shared_pkg"] = "Percona-Server-shared-#{version.tr(".", "")}"
 
   # Need to remove this to avoid conflicts
   package "mysql-libs" do
